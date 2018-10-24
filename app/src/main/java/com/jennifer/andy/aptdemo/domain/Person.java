@@ -1,5 +1,6 @@
 package com.jennifer.andy.aptdemo.domain;
 
+
 import com.jennifer.andy.apt.annotation.Who;
 
 import java.lang.annotation.ElementType;
