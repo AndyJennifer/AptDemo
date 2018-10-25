@@ -1,7 +1,6 @@
 package com.jennifer.andy.apt_compiler;
 
 import com.google.auto.service.AutoService;
-import com.jennifer.andy.apt.annotation.Who;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
@@ -15,52 +14,26 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
-import javax.tools.Diagnostic;
-
 
 /**
  * Author:  andy.xwt
- * Date:    2018/10/22 11:30
- * Description:
+ * Date:    2018/10/25 15:38
+ * Description: 通过JavaPoet生成java文件
  */
 
 @AutoService(Processor.class)
 @SupportedAnnotationTypes("com.jennifer.andy.apt.annotation.Who")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
-public class MyProcessor extends AbstractProcessor {
+public class CreateFileByJavaPoetProcessor extends AbstractProcessor {
 
     @Override
-    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        simpleProcess(annotations, roundEnv);
-//        createFileByJavaPoet(annotations, roundEnv);
-        return true;
+    public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
+        createFileByJavaPoet(set, roundEnvironment);
+        return false;
     }
 
-    private void simpleProcess(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(Who.class);
-        log(annotations.toString());
-        log(elements.toString());
-        for (Element element : elements) {
-            //如果当前元素类型是class类型
-            if (element.getKind() == ElementKind.CLASS) {
-                TypeElement typeElement = (TypeElement) element;
-                log(typeElement.getSimpleName().toString());
-                Who annotation = typeElement.getAnnotation(Who.class);
-                log(annotation.name() + "---->" + annotation.age());
-            }
-        }
-    }
-
-    /**
-     * 手动创建源文件
-     */
-    private void createFileByHand() {
-
-    }
 
     /**
      * 通过JavaPoet生成新的源文件
@@ -88,14 +61,5 @@ public class MyProcessor extends AbstractProcessor {
         }
 
     }
-
-    /**
-     * 调用打印语句而已
-     */
-    private void log(String msg) {
-        processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, msg);
-    }
-
-
-
 }
+
