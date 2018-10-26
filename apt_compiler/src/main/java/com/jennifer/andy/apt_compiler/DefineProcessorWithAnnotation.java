@@ -17,7 +17,7 @@ import javax.lang.model.element.TypeElement;
 
 @SupportedAnnotationTypes("com.jennifer.andy.apt.annotation.Who")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
-public class SecondProcessor extends AbstractProcessor {
+public class DefineProcessorWithAnnotation extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {

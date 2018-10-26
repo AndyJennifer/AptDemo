@@ -37,7 +37,7 @@ public class MyProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         simpleProcess(annotations, roundEnv);
 //        createFileByJavaPoet(annotations, roundEnv);
-        return true;
+        return false;
     }
 
     private void simpleProcess(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
