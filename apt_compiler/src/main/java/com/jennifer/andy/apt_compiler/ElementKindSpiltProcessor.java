@@ -36,7 +36,6 @@ public class ElementKindSpiltProcessor extends AbstractProcessor {
     }
 
 
-    //当然你可以不用重新该方法，可以使用SupportedAnnotationTypes注解，但是需要当前注解的全限定名称(包含包名）
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         return ImmutableSet.of(Who.class.getName());

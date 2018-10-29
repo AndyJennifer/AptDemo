@@ -20,7 +20,7 @@ import javax.lang.model.type.TypeMirror;
 /**
  * Author:  andy.xwt
  * Date:    2018/10/26 16:54
- * Description:
+ * Description:通过TypeMirror获取元素类型
  */
 @AutoService(Processor.class)
 public class TypeKindSpiltProcessor extends AbstractProcessor {
@@ -42,7 +42,6 @@ public class TypeKindSpiltProcessor extends AbstractProcessor {
     }
 
 
-    //当然你可以不用重新该方法，可以使用SupportedAnnotationTypes注解，但是需要当前注解的全限定名称(包含包名）
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         return ImmutableSet.of(Who.class.getName());
